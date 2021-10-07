@@ -35,7 +35,7 @@ OptInfo = namedtuple("OptInfo", OptInfoUl._fields + OptInfoRl._fields)
 SamplesToBuffer = namedarraytuple("SamplesToBuffer",
     ["observation", "action", "reward", "done"])
 
-
+ 
 class DqnUl(RlAlgorithm):
     """
     DQN algorithm trainig from a replay buffer, with options for double-dqn, n-step

@@ -1,0 +1,421 @@
+Unable to import tensorboard SummaryWriter, proceeding without.
+{'agent': {},
+ 'algo': {'batch_size': 256,
+          'clip_grad_norm': 40.0,
+          'discount': 0.99,
+          'double_dqn': True,
+          'learning_rate': 0.00015,
+          'max_steps_ul': None,
+          'min_steps_rl': 100000.0,
+          'min_steps_ul': 50000.0,
+          'n_step_return': 1,
+          'prioritized_replay': False,
+          'replay_size': 1000000,
+          'target_update_interval': 1000,
+          'ul_anchor_hidden_sizes': 512,
+          'ul_batch_B': 32,
+          'ul_batch_T': 16,
+          'ul_clip_grad_norm': 10.0,
+          'ul_delta_T': 3,
+          'ul_latent_size': 256,
+          'ul_learning_rate': 0.001,
+          'ul_lr_schedule': 'cosine',
+          'ul_lr_warmup': 0,
+          'ul_optim_kwargs': None,
+          'ul_random_shift_pad': 4,
+          'ul_random_shift_prob': 1,
+          'ul_target_update_interval': 1,
+          'ul_target_update_tau': 0.01,
+          'ul_update_schedule': 'quadratic_3'},
+ 'env': {'episodic_lives': False,
+         'fire_on_reset': True,
+         'game': 'breakout',
+         'horizon': 27000,
+         'repeat_action_probability': 0.25},
+ 'model': {'channels': [32, 64, 64],
+           'hidden_sizes': 512,
+           'kernel_sizes': [8, 4, 3],
+           'kiaming_init': True,
+           'paddings': None,
+           'stop_conv_grad': False,
+           'strides': [4, 2, 1]},
+ 'optim': {'eps': 3.90625e-05},
+ 'runner': {'log_interval_steps': 500000.0, 'n_steps': 25000000.0},
+ 'sampler': {'batch_B': 16,
+             'batch_T': 2,
+             'eval_max_steps': 150000,
+             'eval_max_trajectories': 75,
+             'eval_n_envs': 4,
+             'max_decorrelation_steps': 1000}}
+2021-10-06 14:58:46.286706  | breakout_0 Runner  master CPU affinity: [4].
+2021-10-06 14:58:46.349905  | breakout_0 Runner  master Torch threads: 12.
+[32musing seed 9427[0m
+2021-10-06 14:58:51.518681  | breakout_0 Modeul using gradients on all parameters.
+2021-10-06 14:58:51.518865  | breakout_0 Agent NOT loading state dict.
+2021-10-06 14:58:53.514707  | breakout_0 Sampler decorrelating envs, max steps: 1000
+2021-10-06 14:59:01.622748  | breakout_0 Agent at itr 0, sample eps 1.0 (min itr: 50, max_itr: 1000)
+2021-10-06 14:59:01.623015  | breakout_0 Serial Sampler initialized.
+2021-10-06 14:59:01.623112  | breakout_0 Running 781250 iterations of minibatch RL.
+2021-10-06 14:59:08.484142  | breakout_0 Initialized agent model on device: cuda:0.
+2021-10-06 14:59:08.489154  | breakout_0 From sampler batch size 32, training batch size 256, and replay ratio 8, computed 1 updates per iteration.
+2021-10-06 14:59:08.489277  | breakout_0 Agent setting min/max epsilon itrs: 3125, 31250
+2021-10-06 14:59:08.490665  | breakout_0 Frame-based buffer using 4-frame sequences.
+2021-10-06 14:59:15.807521  | breakout_0 Total number of UL updates to do: 757683.
+2021-10-06 14:59:16.341681  | breakout_0 itr #0 Evaluating agent...
+2021-10-06 14:59:16.342057  | breakout_0 itr #0 Agent at itr 0, eval eps 1.0
+2021-10-06 14:59:16.971357  | breakout_0 itr #0 Agent at itr 0, eval eps 1.0
+2021-10-06 14:59:39.743301  | breakout_0 itr #0 Evaluation reached max num trajectories (75).
+2021-10-06 14:59:39.743938  | breakout_0 itr #0 Evaluation runs complete.
+2021-10-06 14:59:39.744092  | breakout_0 itr #0 saving snapshot...
+2021-10-06 14:59:39.751009  | breakout_0 itr #0 saved
+2021-10-06 14:59:39.790998  | -----------------------------  -------------
+2021-10-06 14:59:39.791083  | Diagnostics/StepsInEval        14357
+2021-10-06 14:59:39.791121  | Diagnostics/TrajsInEval           75
+2021-10-06 14:59:39.791154  | Diagnostics/CumEvalTime           23.4018
+2021-10-06 14:59:39.791188  | Diagnostics/CumTrainTime           0.0310209
+2021-10-06 14:59:39.791222  | Diagnostics/Iteration              0
+2021-10-06 14:59:39.791253  | Diagnostics/CumTime (s)           23.4328
+2021-10-06 14:59:39.791284  | Diagnostics/CumSteps              32
+2021-10-06 14:59:39.791318  | Diagnostics/CumCompletedTrajs      0
+2021-10-06 14:59:39.791351  | Diagnostics/CumUpdates             0
+2021-10-06 14:59:39.791397  | Diagnostics/StepsPerSecond       nan
+2021-10-06 14:59:39.791430  | Diagnostics/UpdatesPerSecond     nan
+2021-10-06 14:59:39.791463  | Diagnostics/ReplayRatio            0
+2021-10-06 14:59:39.791497  | Diagnostics/CumReplayRatio         0
+2021-10-06 14:59:39.791528  | LengthAverage                    191.427
+2021-10-06 14:59:39.791558  | LengthStd                         55.7951
+2021-10-06 14:59:39.791591  | LengthMedian                     181
+2021-10-06 14:59:39.791625  | LengthMin                        124
+2021-10-06 14:59:39.791656  | LengthMax                        331
+2021-10-06 14:59:39.791687  | ReturnAverage                      1.4
+2021-10-06 14:59:39.791720  | ReturnStd                          1.26491
+2021-10-06 14:59:39.791754  | ReturnMedian                       1
+2021-10-06 14:59:39.791786  | ReturnMin                          0
+2021-10-06 14:59:39.791817  | ReturnMax                          5
+2021-10-06 14:59:39.791850  | NonzeroRewardsAverage              1.4
+2021-10-06 14:59:39.791883  | NonzeroRewardsStd                  1.26491
+2021-10-06 14:59:39.791914  | NonzeroRewardsMedian               1
+2021-10-06 14:59:39.791951  | NonzeroRewardsMin                  0
+2021-10-06 14:59:39.791986  | NonzeroRewardsMax                  5
+2021-10-06 14:59:39.792017  | DiscountedReturnAverage            0.504102
+2021-10-06 14:59:39.792048  | DiscountedReturnStd                0.427592
+2021-10-06 14:59:39.792079  | DiscountedReturnMedian             0.569601
+2021-10-06 14:59:39.792114  | DiscountedReturnMin                0
+2021-10-06 14:59:39.792146  | DiscountedReturnMax                1.37193
+2021-10-06 14:59:39.792177  | GameScoreAverage                   1.4
+2021-10-06 14:59:39.792208  | GameScoreStd                       1.26491
+2021-10-06 14:59:39.792243  | GameScoreMedian                    1
+2021-10-06 14:59:39.792275  | GameScoreMin                       0
+2021-10-06 14:59:39.792306  | GameScoreMax                       5
+2021-10-06 14:59:39.792337  | ulLossAverage                    nan
+2021-10-06 14:59:39.792372  | ulLossStd                        nan
+2021-10-06 14:59:39.792405  | ulLossMedian                     nan
+2021-10-06 14:59:39.792436  | ulLossMin                        nan
+2021-10-06 14:59:39.792467  | ulLossMax                        nan
+2021-10-06 14:59:39.792501  | ulAccuracyAverage                nan
+2021-10-06 14:59:39.792532  | ulAccuracyStd                    nan
+2021-10-06 14:59:39.792573  | ulAccuracyMedian                 nan
+2021-10-06 14:59:39.792604  | ulAccuracyMin                    nan
+2021-10-06 14:59:39.792639  | ulAccuracyMax                    nan
+2021-10-06 14:59:39.792671  | ulGradNormAverage                nan
+2021-10-06 14:59:39.792702  | ulGradNormStd                    nan
+2021-10-06 14:59:39.792733  | ulGradNormMedian                 nan
+2021-10-06 14:59:39.792768  | ulGradNormMin                    nan
+2021-10-06 14:59:39.792800  | ulGradNormMax                    nan
+2021-10-06 14:59:39.792831  | ulUpdatesAverage                 nan
+2021-10-06 14:59:39.792862  | ulUpdatesStd                     nan
+2021-10-06 14:59:39.792896  | ulUpdatesMedian                  nan
+2021-10-06 14:59:39.792928  | ulUpdatesMin                     nan
+2021-10-06 14:59:39.792966  | ulUpdatesMax                     nan
+2021-10-06 14:59:39.792999  | lossAverage                      nan
+2021-10-06 14:59:39.793032  | lossStd                          nan
+2021-10-06 14:59:39.793063  | lossMedian                       nan
+2021-10-06 14:59:39.793093  | lossMin                          nan
+2021-10-06 14:59:39.793126  | lossMax                          nan
+2021-10-06 14:59:39.793159  | gradNormAverage                  nan
+2021-10-06 14:59:39.793189  | gradNormStd                      nan
+2021-10-06 14:59:39.793220  | gradNormMedian                   nan
+2021-10-06 14:59:39.793253  | gradNormMin                      nan
+2021-10-06 14:59:39.793286  | gradNormMax                      nan
+2021-10-06 14:59:39.793317  | tdAbsErrAverage                  nan
+2021-10-06 14:59:39.793348  | tdAbsErrStd                      nan
+2021-10-06 14:59:39.793388  | tdAbsErrMedian                   nan
+2021-10-06 14:59:39.793422  | tdAbsErrMin                      nan
+2021-10-06 14:59:39.793453  | tdAbsErrMax                      nan
+2021-10-06 14:59:39.793484  | -----------------------------  -------------
+2021-10-06 14:59:39.795210  | breakout_0 itr #0 Optimizing over 15625 iterations.
+Warning: No valid output stream.
+2021-10-06 14:59:39.795575  | breakout_0 itr #0 Agent at itr 0, sample eps 1.0 (min itr: 3125, max_itr: 31250)
+2021-10-06 14:59:39.795787  | breakout_0 itr #0 Agent at itr 0, sample eps 1.0 (min itr: 3125, max_itr: 31250)
+2021-10-06 15:10:52.233197  | breakout_0 itr #3125 Agent at itr 3125, sample eps 1.0 (min itr: 3125, max_itr: 31250)
+2021-10-06 15:10:52.296849  | breakout_0 itr #3125 Agent at itr 3125, sample eps 1.0 (min itr: 3125, max_itr: 31250)
+2021-10-06 15:32:15.302205  | breakout_0 itr #6250 Agent at itr 6250, sample eps 0.8899999999999999 (min itr: 3125, max_itr: 31250)
+2021-10-06 15:32:15.378703  | breakout_0 itr #6250 Agent at itr 6250, sample eps 0.8899999999999999 (min itr: 3125, max_itr: 31250)
+2021-10-06 15:53:45.927861  | breakout_0 itr #9375 Agent at itr 9375, sample eps 0.78 (min itr: 3125, max_itr: 31250)
+2021-10-06 15:53:45.973097  | breakout_0 itr #9375 Agent at itr 9375, sample eps 0.78 (min itr: 3125, max_itr: 31250)
+2021-10-06 16:15:20.396623  | breakout_0 itr #12500 Agent at itr 12500, sample eps 0.67 (min itr: 3125, max_itr: 31250)
+2021-10-06 16:15:20.450828  | breakout_0 itr #12500 Agent at itr 12500, sample eps 0.67 (min itr: 3125, max_itr: 31250)
+2021-10-06 16:36:41.247263  | breakout_0 itr #15624 Evaluating agent...
+2021-10-06 16:36:41.416274  | breakout_0 itr #15624 Agent at itr 15624, eval eps 0.001
+2021-10-06 16:36:41.543095  | breakout_0 itr #15624 Agent at itr 15624, eval eps 0.001
+2021-10-06 16:40:22.621313  | breakout_0 itr #15624 Evaluation reached max num time steps (37500).
+2021-10-06 16:40:22.659043  | breakout_0 itr #15624 Evaluation runs complete.
+2021-10-06 16:40:22.659296  | breakout_0 itr #15624 saving snapshot...
+2021-10-06 16:40:22.718201  | breakout_0 itr #15624 saved
+2021-10-06 16:40:23.021781  | -----------------------------  ----------------
+2021-10-06 16:40:23.021905  | Diagnostics/StepsInEval        115066
+2021-10-06 16:40:23.021953  | Diagnostics/TrajsInEval            12
+2021-10-06 16:40:23.021988  | Diagnostics/CumEvalTime           244.644
+2021-10-06 16:40:23.022020  | Diagnostics/CumTrainTime         5821.76
+2021-10-06 16:40:23.022071  | Diagnostics/Iteration           15624
+2021-10-06 16:40:23.022106  | Diagnostics/CumTime (s)          6066.4
+2021-10-06 16:40:23.022138  | Diagnostics/CumSteps           500000
+2021-10-06 16:40:23.022169  | Diagnostics/CumCompletedTrajs    2550
+2021-10-06 16:40:23.022200  | Diagnostics/CumUpdates          12500
+2021-10-06 16:40:23.022234  | Diagnostics/StepsPerSecond         85.8852
+2021-10-06 16:40:23.022267  | Diagnostics/UpdatesPerSecond        2.14713
+2021-10-06 16:40:23.022298  | Diagnostics/ReplayRatio             6.4
+2021-10-06 16:40:23.022329  | Diagnostics/CumReplayRatio          6.4
+2021-10-06 16:40:23.022364  | LengthAverage                    9588.83
+2021-10-06 16:40:23.022397  | LengthStd                        8673.99
+2021-10-06 16:40:23.022428  | LengthMedian                     8632
+2021-10-06 16:40:23.022459  | LengthMin                         569
+2021-10-06 16:40:23.022493  | LengthMax                       27001
+2021-10-06 16:40:23.022524  | ReturnAverage                       2.25
+2021-10-06 16:40:23.022555  | ReturnStd                           1.23322
+2021-10-06 16:40:23.022586  | ReturnMedian                        2
+2021-10-06 16:40:23.022621  | ReturnMin                           0
+2021-10-06 16:40:23.022653  | ReturnMax                           5
+2021-10-06 16:40:23.022684  | NonzeroRewardsAverage               2.25
+2021-10-06 16:40:23.022715  | NonzeroRewardsStd                   1.23322
+2021-10-06 16:40:23.022749  | NonzeroRewardsMedian                2
+2021-10-06 16:40:23.022781  | NonzeroRewardsMin                   0
+2021-10-06 16:40:23.022820  | NonzeroRewardsMax                   5
+2021-10-06 16:40:23.022854  | DiscountedReturnAverage             0.170482
+2021-10-06 16:40:23.022889  | DiscountedReturnStd                 0.295331
+2021-10-06 16:40:23.022922  | DiscountedReturnMedian              3.70439e-12
+2021-10-06 16:40:23.022960  | DiscountedReturnMin                 0
+2021-10-06 16:40:23.022993  | DiscountedReturnMax                 0.696557
+2021-10-06 16:40:23.023026  | GameScoreAverage                    2.25
+2021-10-06 16:40:23.023057  | GameScoreStd                        1.23322
+2021-10-06 16:40:23.023088  | GameScoreMedian                     2
+2021-10-06 16:40:23.023121  | GameScoreMin                        0
+2021-10-06 16:40:23.023154  | GameScoreMax                        5
+2021-10-06 16:40:23.023185  | ulLossAverage                       1.13502
+2021-10-06 16:40:23.023216  | ulLossStd                           0.553498
+2021-10-06 16:40:23.023249  | ulLossMedian                        1.00928
+2021-10-06 16:40:23.023283  | ulLossMin                           0.419595
+2021-10-06 16:40:23.023314  | ulLossMax                           6.36635
+2021-10-06 16:40:23.023345  | ulAccuracyAverage                   0.631134
+2021-10-06 16:40:23.023378  | ulAccuracyStd                       0.128004
+2021-10-06 16:40:23.023412  | ulAccuracyMedian                    0.665281
+2021-10-06 16:40:23.023443  | ulAccuracyMin                       0
+2021-10-06 16:40:23.023475  | ulAccuracyMax                       0.844156
+2021-10-06 16:40:23.023507  | ulGradNormAverage                   1.77834
+2021-10-06 16:40:23.023540  | ulGradNormStd                       0.751878
+2021-10-06 16:40:23.023571  | ulGradNormMedian                    1.65718
+2021-10-06 16:40:23.023601  | ulGradNormMin                       0.0371279
+2021-10-06 16:40:23.023634  | ulGradNormMax                      48.4031
+2021-10-06 16:40:23.023667  | ulUpdatesAverage                18987.1
+2021-10-06 16:40:23.023698  | ulUpdatesStd                    13173.5
+2021-10-06 16:40:23.023729  | ulUpdatesMedian                 18753
+2021-10-06 16:40:23.023762  | ulUpdatesMin                        0
+2021-10-06 16:40:23.023795  | ulUpdatesMax                    42189
+2021-10-06 16:40:23.023826  | lossAverage                         0.00361812
+2021-10-06 16:40:23.023857  | lossStd                             0.00661738
+2021-10-06 16:40:23.023890  | lossMedian                          0.00163796
+2021-10-06 16:40:23.023937  | lossMin                             0.00027882
+2021-10-06 16:40:23.023970  | lossMax                             0.0514572
+2021-10-06 16:40:23.024001  | gradNormAverage                     0.034478
+2021-10-06 16:40:23.024035  | gradNormStd                         0.0225002
+2021-10-06 16:40:23.024067  | gradNormMedian                      0.0293402
+2021-10-06 16:40:23.024098  | gradNormMin                         0.0042063
+2021-10-06 16:40:23.024128  | gradNormMax                         0.298763
+2021-10-06 16:40:23.024163  | tdAbsErrAverage                     0.0376183
+2021-10-06 16:40:23.024195  | tdAbsErrStd                         0.0760519
+2021-10-06 16:40:23.024225  | tdAbsErrMedian                      0.0143063
+2021-10-06 16:40:23.024256  | tdAbsErrMin                         5.21541e-08
+2021-10-06 16:40:23.024291  | tdAbsErrMax                         1
+2021-10-06 16:40:23.024323  | -----------------------------  ----------------
+2021-10-06 16:40:23.066417  | breakout_0 itr #15624 Optimizing over 15625 iterations.
+Warning: No valid output stream.
+2021-10-06 16:40:23.084982  | breakout_0 itr #15625 Agent at itr 15625, sample eps 0.56 (min itr: 3125, max_itr: 31250)
+2021-10-06 16:40:23.106178  | breakout_0 itr #15625 Agent at itr 15625, sample eps 0.56 (min itr: 3125, max_itr: 31250)
+2021-10-06 17:02:12.506413  | breakout_0 itr #18750 Agent at itr 18750, sample eps 0.44999999999999996 (min itr: 3125, max_itr: 31250)
+2021-10-06 17:02:12.578123  | breakout_0 itr #18750 Agent at itr 18750, sample eps 0.44999999999999996 (min itr: 3125, max_itr: 31250)
+2021-10-06 17:23:55.202407  | breakout_0 itr #21875 Agent at itr 21875, sample eps 0.34 (min itr: 3125, max_itr: 31250)
+2021-10-06 17:23:55.270436  | breakout_0 itr #21875 Agent at itr 21875, sample eps 0.34 (min itr: 3125, max_itr: 31250)
+2021-10-06 17:45:43.460735  | breakout_0 itr #25000 Agent at itr 25000, sample eps 0.22999999999999998 (min itr: 3125, max_itr: 31250)
+2021-10-06 17:45:43.519559  | breakout_0 itr #25000 Agent at itr 25000, sample eps 0.22999999999999998 (min itr: 3125, max_itr: 31250)
+2021-10-06 18:07:24.906756  | breakout_0 itr #28125 Agent at itr 28125, sample eps 0.12000000000000005 (min itr: 3125, max_itr: 31250)
+2021-10-06 18:07:24.968125  | breakout_0 itr #28125 Agent at itr 28125, sample eps 0.12000000000000005 (min itr: 3125, max_itr: 31250)
+2021-10-06 18:29:15.411336  | breakout_0 itr #31249 Evaluating agent...
+2021-10-06 18:29:15.468157  | breakout_0 itr #31249 Agent at itr 31249, eval eps 0.001
+2021-10-06 18:29:15.587161  | breakout_0 itr #31249 Agent at itr 31249, eval eps 0.001
+2021-10-06 18:32:55.224107  | breakout_0 itr #31249 Evaluation reached max num time steps (37500).
+2021-10-06 18:32:55.241862  | breakout_0 itr #31249 Evaluation runs complete.
+2021-10-06 18:32:55.242124  | breakout_0 itr #31249 saving snapshot...
+2021-10-06 18:32:55.293129  | breakout_0 itr #31249 saved
+2021-10-06 18:32:55.682904  | -----------------------------  ----------------
+2021-10-06 18:32:55.683044  | Diagnostics/StepsInEval        108004
+2021-10-06 18:32:55.683083  | Diagnostics/TrajsInEval             4
+2021-10-06 18:32:55.683115  | Diagnostics/CumEvalTime           464.418
+2021-10-06 18:32:55.683149  | Diagnostics/CumTrainTime        12354.6
+2021-10-06 18:32:55.683182  | Diagnostics/Iteration           31249
+2021-10-06 18:32:55.683214  | Diagnostics/CumTime (s)         12819
+2021-10-06 18:32:55.683245  | Diagnostics/CumSteps                1e+06
+2021-10-06 18:32:55.683278  | Diagnostics/CumCompletedTrajs    4264
+2021-10-06 18:32:55.683312  | Diagnostics/CumUpdates          28125
+2021-10-06 18:32:55.683344  | Diagnostics/StepsPerSecond         76.5368
+2021-10-06 18:32:55.683375  | Diagnostics/UpdatesPerSecond        2.39178
+2021-10-06 18:32:55.683408  | Diagnostics/ReplayRatio             8
+2021-10-06 18:32:55.683443  | Diagnostics/CumReplayRatio          7.2
+2021-10-06 18:32:55.683475  | LengthAverage                   27001
+2021-10-06 18:32:55.683506  | LengthStd                           0
+2021-10-06 18:32:55.683539  | LengthMedian                    27001
+2021-10-06 18:32:55.683594  | LengthMin                       27001
+2021-10-06 18:32:55.683626  | LengthMax                       27001
+2021-10-06 18:32:55.683657  | ReturnAverage                       5.75
+2021-10-06 18:32:55.683690  | ReturnStd                           3.11247
+2021-10-06 18:32:55.683723  | ReturnMedian                        6.5
+2021-10-06 18:32:55.683754  | ReturnMin                           1
+2021-10-06 18:32:55.683785  | ReturnMax                           9
+2021-10-06 18:32:55.683818  | NonzeroRewardsAverage               5.75
+2021-10-06 18:32:55.683852  | NonzeroRewardsStd                   3.11247
+2021-10-06 18:32:55.683884  | NonzeroRewardsMedian                6.5
+2021-10-06 18:32:55.683915  | NonzeroRewardsMin                   1
+2021-10-06 18:32:55.683954  | NonzeroRewardsMax                   9
+2021-10-06 18:32:55.683988  | DiscountedReturnAverage             0.236912
+2021-10-06 18:32:55.684019  | DiscountedReturnStd                 0.296086
+2021-10-06 18:32:55.684049  | DiscountedReturnMedian              0.111334
+2021-10-06 18:32:55.684083  | DiscountedReturnMin                 7.31151e-47
+2021-10-06 18:32:55.684115  | DiscountedReturnMax                 0.72498
+2021-10-06 18:32:55.684146  | GameScoreAverage                    5.75
+2021-10-06 18:32:55.684177  | GameScoreStd                        3.11247
+2021-10-06 18:32:55.684212  | GameScoreMedian                     6.5
+2021-10-06 18:32:55.684244  | GameScoreMin                        1
+2021-10-06 18:32:55.684275  | GameScoreMax                        9
+2021-10-06 18:32:55.684315  | ulLossAverage                       0.930144
+2021-10-06 18:32:55.684351  | ulLossStd                           0.183713
+2021-10-06 18:32:55.684384  | ulLossMedian                        0.918398
+2021-10-06 18:32:55.684415  | ulLossMin                           0.363604
+2021-10-06 18:32:55.684446  | ulLossMax                           2.01488
+2021-10-06 18:32:55.684480  | ulAccuracyAverage                   0.699155
+2021-10-06 18:32:55.684513  | ulAccuracyStd                       0.0492725
+2021-10-06 18:32:55.684544  | ulAccuracyMedian                    0.700803
+2021-10-06 18:32:55.684575  | ulAccuracyMin                       0.458678
+2021-10-06 18:32:55.684609  | ulAccuracyMax                       0.876016
+2021-10-06 18:32:55.684640  | ulGradNormAverage                   1.6402
+2021-10-06 18:32:55.684672  | ulGradNormStd                       5.55894
+2021-10-06 18:32:55.684702  | ulGradNormMedian                    1.50718
+2021-10-06 18:32:55.684737  | ulGradNormMin                       0.77227
+2021-10-06 18:32:55.684769  | ulGradNormMax                     830.181
+2021-10-06 18:32:55.684800  | ulUpdatesAverage                65628
+2021-10-06 18:32:55.684831  | ulUpdatesStd                    13531.6
+2021-10-06 18:32:55.684866  | ulUpdatesMedian                 65628
+2021-10-06 18:32:55.684898  | ulUpdatesMin                    42192
+2021-10-06 18:32:55.684929  | ulUpdatesMax                    89064
+2021-10-06 18:32:55.684969  | lossAverage                         0.00220624
+2021-10-06 18:32:55.685002  | lossStd                             0.000865331
+2021-10-06 18:32:55.685033  | lossMedian                          0.00205321
+2021-10-06 18:32:55.685064  | lossMin                             0.000407043
+2021-10-06 18:32:55.685097  | lossMax                             0.0110907
+2021-10-06 18:32:55.685129  | gradNormAverage                     0.0387345
+2021-10-06 18:32:55.685160  | gradNormStd                         0.0326485
+2021-10-06 18:32:55.685191  | gradNormMedian                      0.0355295
+2021-10-06 18:32:55.685224  | gradNormMin                         0.00846226
+2021-10-06 18:32:55.685256  | gradNormMax                         3.14145
+2021-10-06 18:32:55.685287  | tdAbsErrAverage                     0.0343547
+2021-10-06 18:32:55.685318  | tdAbsErrStd                         0.0571978
+2021-10-06 18:32:55.685351  | tdAbsErrMedian                      0.0171071
+2021-10-06 18:32:55.685384  | tdAbsErrMin                         7.45058e-08
+2021-10-06 18:32:55.685424  | tdAbsErrMax                         1
+2021-10-06 18:32:55.685456  | -----------------------------  ----------------
+2021-10-06 18:32:55.714763  | breakout_0 itr #31249 Optimizing over 15625 iterations.
+Warning: No valid output stream.
+2021-10-06 18:32:55.715260  | breakout_0 itr #31250 Agent at itr 31250, sample eps 0.01 (min itr: 3125, max_itr: 31250)
+2021-10-06 18:32:55.728654  | breakout_0 itr #31250 Agent at itr 31250, sample eps 0.01 (min itr: 3125, max_itr: 31250)
+2021-10-06 20:17:17.975460  | breakout_0 itr #46874 Evaluating agent...
+2021-10-06 20:17:18.041325  | breakout_0 itr #46874 Agent at itr 46874, eval eps 0.001
+2021-10-06 20:17:18.151449  | breakout_0 itr #46874 Agent at itr 46874, eval eps 0.001
+2021-10-06 20:18:28.307520  | breakout_0 itr #46874 Evaluation reached max num trajectories (75).
+2021-10-06 20:18:28.325068  | breakout_0 itr #46874 Evaluation runs complete.
+2021-10-06 20:18:28.325346  | breakout_0 itr #46874 saving snapshot...
+2021-10-06 20:18:28.341281  | breakout_0 itr #46874 saved
+2021-10-06 20:18:28.757881  | -----------------------------  ----------------
+2021-10-06 20:18:28.758002  | Diagnostics/StepsInEval         45700
+2021-10-06 20:18:28.758041  | Diagnostics/TrajsInEval            75
+2021-10-06 20:18:28.758074  | Diagnostics/CumEvalTime           534.701
+2021-10-06 20:18:28.758108  | Diagnostics/CumTrainTime        18617.3
+2021-10-06 20:18:28.758140  | Diagnostics/Iteration           46874
+2021-10-06 20:18:28.758171  | Diagnostics/CumTime (s)         19152
+2021-10-06 20:18:28.758219  | Diagnostics/CumSteps                1.5e+06
+2021-10-06 20:18:28.758256  | Diagnostics/CumCompletedTrajs    5004
+2021-10-06 20:18:28.758288  | Diagnostics/CumUpdates          43750
+2021-10-06 20:18:28.758319  | Diagnostics/StepsPerSecond         79.8369
+2021-10-06 20:18:28.758350  | Diagnostics/UpdatesPerSecond        2.4949
+2021-10-06 20:18:28.758384  | Diagnostics/ReplayRatio             8
+2021-10-06 20:18:28.758417  | Diagnostics/CumReplayRatio          7.46667
+2021-10-06 20:18:28.758448  | LengthAverage                     609.333
+2021-10-06 20:18:28.758479  | LengthStd                         109.371
+2021-10-06 20:18:28.758513  | LengthMedian                      620
+2021-10-06 20:18:28.758544  | LengthMin                         352
+2021-10-06 20:18:28.758574  | LengthMax                         871
+2021-10-06 20:18:28.758605  | ReturnAverage                      13.1067
+2021-10-06 20:18:28.758639  | ReturnStd                           3.2314
+2021-10-06 20:18:28.758672  | ReturnMedian                       13
+2021-10-06 20:18:28.758702  | ReturnMin                           6
+2021-10-06 20:18:28.758733  | ReturnMax                          21
+2021-10-06 20:18:28.758767  | NonzeroRewardsAverage              13.1067
+2021-10-06 20:18:28.758799  | NonzeroRewardsStd                   3.2314
+2021-10-06 20:18:28.758830  | NonzeroRewardsMedian               13
+2021-10-06 20:18:28.758861  | NonzeroRewardsMin                   6
+2021-10-06 20:18:28.758895  | NonzeroRewardsMax                  21
+2021-10-06 20:18:28.758929  | DiscountedReturnAverage             1.99576
+2021-10-06 20:18:28.758967  | DiscountedReturnStd                 0.156667
+2021-10-06 20:18:28.759000  | DiscountedReturnMedian              1.97815
+2021-10-06 20:18:28.759033  | DiscountedReturnMin                 1.64461
+2021-10-06 20:18:28.759064  | DiscountedReturnMax                 2.28847
+2021-10-06 20:18:28.759095  | GameScoreAverage                   14.4667
+2021-10-06 20:18:28.759128  | GameScoreStd                        4.60241
+2021-10-06 20:18:28.759162  | GameScoreMedian                    14
+2021-10-06 20:18:28.759193  | GameScoreMin                        6
+2021-10-06 20:18:28.759224  | GameScoreMax                       25
+2021-10-06 20:18:28.759256  | ulLossAverage                       0.972881
+2021-10-06 20:18:28.759290  | ulLossStd                           0.197522
+2021-10-06 20:18:28.759322  | ulLossMedian                        0.964814
+2021-10-06 20:18:28.759353  | ulLossMin                           0.292653
+2021-10-06 20:18:28.759395  | ulLossMax                           2.33699
+2021-10-06 20:18:28.759429  | ulAccuracyAverage                   0.67967
+2021-10-06 20:18:28.759460  | ulAccuracyStd                       0.057827
+2021-10-06 20:18:28.759491  | ulAccuracyMedian                    0.681128
+2021-10-06 20:18:28.759524  | ulAccuracyMin                       0.426195
+2021-10-06 20:18:28.759556  | ulAccuracyMax                       0.902344
+2021-10-06 20:18:28.759587  | ulGradNormAverage                   1.75121
+2021-10-06 20:18:28.759618  | ulGradNormStd                       5.11806
+2021-10-06 20:18:28.759651  | ulGradNormMedian                    1.58815
+2021-10-06 20:18:28.759684  | ulGradNormMin                       0.786152
+2021-10-06 20:18:28.759716  | ulGradNormMax                     609.632
+2021-10-06 20:18:28.759747  | ulUpdatesAverage               112503
+2021-10-06 20:18:28.759780  | ulUpdatesStd                    13531.6
+2021-10-06 20:18:28.759814  | ulUpdatesMedian                112503
+2021-10-06 20:18:28.759846  | ulUpdatesMin                    89067
+2021-10-06 20:18:28.759877  | ulUpdatesMax                   135939
+2021-10-06 20:18:28.759909  | lossAverage                         0.00275729
+2021-10-06 20:18:28.759947  | lossStd                             0.00110897
+2021-10-06 20:18:28.759978  | lossMedian                          0.0025283
+2021-10-06 20:18:28.760009  | lossMin                             0.000862218
+2021-10-06 20:18:28.760043  | lossMax                             0.0292821
+2021-10-06 20:18:28.760081  | gradNormAverage                     0.047054
+2021-10-06 20:18:28.760113  | gradNormStd                         0.0868547
+2021-10-06 20:18:28.760143  | gradNormMedian                      0.0421206
+2021-10-06 20:18:28.760178  | gradNormMin                         0.0127965
+2021-10-06 20:18:28.760210  | gradNormMax                         6.4328
+2021-10-06 20:18:28.760241  | tdAbsErrAverage                     0.0411121
+2021-10-06 20:18:28.760271  | tdAbsErrStd                         0.0619603
+2021-10-06 20:18:28.760306  | tdAbsErrMedian                      0.0228445
+2021-10-06 20:18:28.760338  | tdAbsErrMin                         2.98023e-08
+2021-10-06 20:18:28.760368  | tdAbsErrMax                         1
+2021-10-06 20:18:28.760399  | -----------------------------  ----------------
+2021-10-06 20:18:28.776733  | breakout_0 itr #46874 Optimizing over 15625 iterations.
+Warning: No valid output stream.

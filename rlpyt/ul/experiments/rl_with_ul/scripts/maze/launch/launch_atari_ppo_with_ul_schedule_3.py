@@ -13,51 +13,78 @@ num_computers = int(args[1])
 
 print(f"MY_COMPUTER: {my_computer},  NUM_COMPUTERS: {num_computers}")
 
-script = "rlpyt/ul/experiments/rl_with_ul/scripts/atari/train/atari_dqn_with_ul_serial.py"
+script = "rlpyt/ul/experiments/rl_with_ul/scripts/atari/train/atari_ppo_with_ul_serial.py"
 
-affinity_code = quick_affinity_code(contexts_per_gpu=1, use_gpu=True)
-runs_per_setting = 10
-experiment_title = "atari_dqn_with_ul_schedule_1"
+affinity_code = quick_affinity_code(contexts_per_gpu=3)
+runs_per_setting = 2
+experiment_title = "atari_ppo_with_ul_schedule_3"
 
 variant_levels_1 = list()
 # variant_levels_2 = list()
 # variant_levels_3 = list()
 
-stop_conv_grads = [False, True]
-values = list(zip(stop_conv_grads))
-dir_names = ["{}stpcnvgrd".format(*v) for v in values]
-keys = [("model", "stop_conv_grad")]
+stop_conv_grads = [True]
+rl_grad_norms = [1e4]
+values = list(zip(stop_conv_grads, rl_grad_norms))
+dir_names = ["{}stpcnvgrd_{}rlgrdnrm".format(*v) for v in values]
+keys = [("model", "stop_conv_grad"), ("algo", "clip_grad_norm")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
 min_steps_rl = [1e5]
-min_steps_ul = [5e4]
-ul_lr_schedule = ["cosine"]
-values = list(zip(min_steps_rl, min_steps_ul, ul_lr_schedule))
-dir_names = ["{}rlminstepsul{}_{}anneal".format(*v) for v in values]
-keys = [("algo", "min_steps_rl"), ("algo", "min_steps_ul"),
-    ("algo", "ul_lr_schedule")]
+values = list(zip(min_steps_rl))
+dir_names = ["{}rlminsteps".format(*v) for v in values]
+keys = [("algo", "min_steps_rl")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
 ul_update_schedules = [
-#    "constant_1",
-#    "linear_2",
-    "quadratic_3",
-#    "mod_2",
+    "quadratic_15", "quadratic_30",
+    "pulse_1000000_1000", "pulse_1000000_4000",
+    "pulse_2000000_4000", "pulse_4000000_4000"
 ]
-values = list(zip(ul_update_schedules))
-dir_names = ["{}".format(*v) for v in values]
-keys = [("algo", "ul_update_schedule")]
+max_steps_ul = [
+    10e6, 5e6,
+    20e6, 5e6,
+    10e6, 20e6,
+]  # ~20k updates total
+min_steps_ul = [
+    5e4, 5e4,
+    1e5, 1e5,
+    1e5, 1e5,
+]
+values = list(zip(ul_update_schedules, max_steps_ul, min_steps_ul))
+dir_names = ["{}_{}maxstepulmin{}".format(*v) for v in values]
+keys = [("algo", "ul_update_schedule"), ("algo", "max_steps_ul"),
+    ("algo", "min_steps_ul")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
+
+ul_lr_anneals = [None, "cosine"]
+values = list(zip(ul_lr_anneals))
+dir_names = ["{}anneal".format(*v) for v in values]
+keys = [("algo", "ul_lr_schedule")]
+variant_levels_1.append(VariantLevel(keys, values, dir_names))
+
+ul_rs_probs = [0.1]
+values = list(zip(ul_rs_probs))
+dir_names = ["{}rsprob".format(*v) for v in values]
+keys = [("algo", "ul_random_shift_prob")]
+variant_levels_1.append(VariantLevel(keys, values, dir_names))
+
 
 # games = ["pong", "qbert", "seaquest", "space_invaders",
 #     "alien", "breakout", "frostbite", "gravitar"]
-games = ["breakout", "gravitar", "qbert", "space_invaders"]
+# games = ["breakout", "gravitar", "qbert", "space_invaders"]
+games = ["breakout", "space_invaders"]
 values = list(zip(games))
 dir_names = games
 keys = [("env", "game")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 # variant_levels_2.append(VariantLevel(keys, values, dir_names))
 # variant_levels_3.append(VariantLevel(keys, values, dir_names))
+
+
+
+##################################################
+# RL CONFIG (mostly)
 
 ##################################################
 # RL CONFIG (mostly)
@@ -80,7 +107,7 @@ else:
 my_variants = variants[my_start:my_end]
 my_log_dirs = log_dirs[my_start:my_end]
 
-default_config_key = "scaled_ddqn_ul"
+default_config_key = "ppo_ul_16env"
 
 run_experiments(
     script=script,

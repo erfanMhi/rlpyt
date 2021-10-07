@@ -121,7 +121,7 @@ class AtariPgModel(torch.nn.Module):
 class AtariDqnModel(torch.nn.Module):
     """Can feed in conv and/or fc1 layer from pre-trained model, or have it
     initialize new ones (if initializing new, must provide image_shape)."""
-
+ 
     def __init__(
             self,
             image_shape,

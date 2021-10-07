@@ -13,37 +13,37 @@ num_computers = int(args[1])
 
 print(f"MY_COMPUTER: {my_computer},  NUM_COMPUTERS: {num_computers}")
 
-script = "rlpyt/ul/experiments/rl_with_ul/scripts/atari/train/atari_dqn_with_ul_serial.py"
+script = "rlpyt/ul/experiments/rl_with_ul/scripts/maze/train/maze_dqn_with_ul_serial.py"
 
 affinity_code = quick_affinity_code(contexts_per_gpu=1, use_gpu=True)
-runs_per_setting = 10
-experiment_title = "atari_dqn_with_ul_schedule_1"
+runs_per_setting = 2
+experiment_title = "maze_dqn_with_ul_schedule_1"
 
 variant_levels_1 = list()
 # variant_levels_2 = list()
 # variant_levels_3 = list()
 
-stop_conv_grads = [False, True]
+#stop_conv_grads = [False, True]
+stop_conv_grads = [False]
 values = list(zip(stop_conv_grads))
 dir_names = ["{}stpcnvgrd".format(*v) for v in values]
 keys = [("model", "stop_conv_grad")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
-min_steps_rl = [1e5]
-min_steps_ul = [5e4]
+min_steps_rl = [5e3]
+min_steps_ul = [1e3]
 ul_lr_schedule = ["cosine"]
 values = list(zip(min_steps_rl, min_steps_ul, ul_lr_schedule))
 dir_names = ["{}rlminstepsul{}_{}anneal".format(*v) for v in values]
-keys = [("algo", "min_steps_rl"), ("algo", "min_steps_ul"),
-    ("algo", "ul_lr_schedule")]
+keys = [("algo", "min_steps_rl"), ("algo", "min_steps_ul"), ("algo", "ul_lr_schedule")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
 ul_update_schedules = [
-#    "constant_1",
+    "constant_1",
 #    "linear_2",
-    "quadratic_3",
+#    "quadratic_3",
 #    "mod_2",
-]
+] 
 values = list(zip(ul_update_schedules))
 dir_names = ["{}".format(*v) for v in values]
 keys = [("algo", "ul_update_schedule")]
@@ -51,11 +51,11 @@ variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
 # games = ["pong", "qbert", "seaquest", "space_invaders",
 #     "alien", "breakout", "frostbite", "gravitar"]
-games = ["breakout", "gravitar", "qbert", "space_invaders"]
-values = list(zip(games))
-dir_names = games
-keys = [("env", "game")]
-variant_levels_1.append(VariantLevel(keys, values, dir_names))
+# games = ["breakout", "gravitar", "qbert", "space_invaders"]
+# values = list(zip(games))
+# dir_names = games
+# keys = [("env", "game")]
+# variant_levels_1.append(VariantLevel(keys, values, dir_names))
 # variant_levels_2.append(VariantLevel(keys, values, dir_names))
 # variant_levels_3.append(VariantLevel(keys, values, dir_names))
 
@@ -64,6 +64,7 @@ variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
 
 variants_1, log_dirs_1 = make_variants(*variant_levels_1)
+print(variants_1, log_dirs_1)
 # variants_2, log_dirs_2 = make_variants(*variant_levels_2)
 
 variants = variants_1  # + variants_2

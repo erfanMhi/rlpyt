@@ -13,41 +13,48 @@ num_computers = int(args[1])
 
 print(f"MY_COMPUTER: {my_computer},  NUM_COMPUTERS: {num_computers}")
 
-script = "rlpyt/ul/experiments/rl_with_ul/scripts/atari/train/atari_dqn_with_ul_serial.py"
+script = "rlpyt/ul/experiments/rl_with_ul/scripts/atari/train/atari_ppo_with_ul_serial.py"
 
-affinity_code = quick_affinity_code(contexts_per_gpu=1, use_gpu=True)
-runs_per_setting = 10
-experiment_title = "atari_dqn_with_ul_schedule_1"
+affinity_code = quick_affinity_code(contexts_per_gpu=3)
+runs_per_setting = 3
+experiment_title = "atari_ppo_with_ul_schedule_1"  # OOPS
 
 variant_levels_1 = list()
 # variant_levels_2 = list()
 # variant_levels_3 = list()
 
-stop_conv_grads = [False, True]
-values = list(zip(stop_conv_grads))
-dir_names = ["{}stpcnvgrd".format(*v) for v in values]
-keys = [("model", "stop_conv_grad")]
+stop_conv_grads = [False]
+ul_update_schedules = ["front_10000_0"]
+values = list(zip(stop_conv_grads, ul_update_schedules))
+dir_names = ["{}stpcnvgrd_{}".format(*v) for v in values]
+keys = [("model", "stop_conv_grad"), ("algo", "ul_update_schedule")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
+min_steps_ul = [1e5]
 min_steps_rl = [1e5]
-min_steps_ul = [5e4]
-ul_lr_schedule = ["cosine"]
-values = list(zip(min_steps_rl, min_steps_ul, ul_lr_schedule))
-dir_names = ["{}rlminstepsul{}_{}anneal".format(*v) for v in values]
-keys = [("algo", "min_steps_rl"), ("algo", "min_steps_ul"),
-    ("algo", "ul_lr_schedule")]
+values = list(zip(min_steps_ul, min_steps_rl))
+dir_names = ["{}ulminrl{}".format(*v) for v in values]
+keys = [("algo", "min_steps_ul"), ("algo", "min_steps_rl")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 
-ul_update_schedules = [
-#    "constant_1",
-#    "linear_2",
-    "quadratic_3",
-#    "mod_2",
-]
-values = list(zip(ul_update_schedules))
-dir_names = ["{}".format(*v) for v in values]
-keys = [("algo", "ul_update_schedule")]
+ul_lrs = [7e-4, 2e-3]
+values = list(zip(ul_lrs))
+dir_names = ["{}ullr".format(*v) for v in values]
+keys = [("algo", "ul_learning_rate")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
+
+ul_anneals = [None, "cosine"]
+values = list(zip(ul_anneals))
+dir_names = ["{}anneal".format(*v) for v in values]
+keys = [("algo", "ul_lr_schedule")]
+variant_levels_1.append(VariantLevel(keys, values, dir_names))
+
+ul_warmups = [0, 1000]
+values = list(zip(ul_warmups))
+dir_names = ["{}warmup".format(*v) for v in values]
+keys = [("algo", "ul_lr_warmup")]
+variant_levels_1.append(VariantLevel(keys, values, dir_names))
+
 
 # games = ["pong", "qbert", "seaquest", "space_invaders",
 #     "alien", "breakout", "frostbite", "gravitar"]
@@ -58,6 +65,11 @@ keys = [("env", "game")]
 variant_levels_1.append(VariantLevel(keys, values, dir_names))
 # variant_levels_2.append(VariantLevel(keys, values, dir_names))
 # variant_levels_3.append(VariantLevel(keys, values, dir_names))
+
+
+
+##################################################
+# RL CONFIG (mostly)
 
 ##################################################
 # RL CONFIG (mostly)
@@ -80,7 +92,7 @@ else:
 my_variants = variants[my_start:my_end]
 my_log_dirs = log_dirs[my_start:my_end]
 
-default_config_key = "scaled_ddqn_ul"
+default_config_key = "ppo_ul_16env"
 
 run_experiments(
     script=script,
